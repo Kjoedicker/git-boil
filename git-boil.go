@@ -73,6 +73,9 @@ func remoteInit(remotes []string) {
 	}
 }
 
+// TODO(#1): Interact with gitea/github api inorder to create repositories
+// func createRepo()
+
 func main() {
 	if len(os.Args) == 1 {
 		fmt.Println("Invalid number of arguments")
