@@ -20,8 +20,10 @@ type remotes struct {
 }
 
 func getConf() (parsed *remotes) {
+	home := os.Getenv("HOME")
+	path := fmt.Sprintf("%v/.config/git-boil/conf.yaml", home)
 
-	buf, err := ioutil.ReadFile("conf.yaml")
+	buf, err := ioutil.ReadFile(path)
 	if err != nil {
 		panic("conf.yaml - not in path")
 	}
@@ -74,8 +76,11 @@ func remoteInit(remotes []string) {
 }
 
 // TODO(#1): Interact with gitea/github api inorder to create repositories
-// func createRepo()
+// func createRepo() {
 
+// }
+
+// TODO(#2): add better error handling for instances where a remote already exists
 func main() {
 	if len(os.Args) == 1 {
 		fmt.Println("Invalid number of arguments")
